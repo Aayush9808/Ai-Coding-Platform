@@ -12,29 +12,29 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-slate-900/80 backdrop-blur-xl border-b border-slate-700/50 sticky top-0 z-50 shadow-lg">
+    <nav className="glass-strong border-b-2 border-purple-500/30 sticky top-0 z-50 shadow-2xl shadow-purple-500/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-18 py-3">
+        <div className="flex justify-between items-center h-20 py-3">
           <div className="flex items-center space-x-8">
-            <Link to="/" className="flex items-center space-x-2 group">
-              <div className="bg-gradient-to-br from-blue-500 to-cyan-500 p-2 rounded-lg shadow-lg group-hover:shadow-blue-500/50 transition-all">
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            <Link to="/" className="flex items-center space-x-3 group">
+              <div className="bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 p-3 rounded-2xl shadow-2xl shadow-purple-500/50 group-hover:shadow-pink-500/70 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 animate-pulse-glow">
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                CodeJudge AI
+              <span className="text-3xl font-black gradient-text">
+                CodeJudge AI ⚡
               </span>
             </Link>
-            <div className="hidden md:flex space-x-2">
-              <Link to="/" className="text-gray-300 hover:text-white hover:bg-slate-800 px-4 py-2 rounded-lg transition-all font-medium">
+            <div className="hidden md:flex space-x-3">
+              <Link to="/" className="text-gray-200 hover:text-white hover:bg-gradient-to-r from-purple-500/20 to-pink-500/20 px-5 py-3 rounded-2xl transition-all font-bold text-lg border-2 border-transparent hover:border-purple-500/50 hover:scale-110 duration-300">
                 🏠 Problems
               </Link>
-              <Link to="/create-problem" className="text-gray-300 hover:text-white hover:bg-slate-800 px-4 py-2 rounded-lg transition-all font-medium">
-                ✨ Create Problem
+              <Link to="/create-problem" className="text-gray-200 hover:text-white hover:bg-gradient-to-r from-pink-500/20 to-cyan-500/20 px-5 py-3 rounded-2xl transition-all font-bold text-lg border-2 border-transparent hover:border-pink-500/50 hover:scale-110 duration-300">
+                ✨ Create
               </Link>
               {user && (
-                <Link to="/dashboard" className="text-gray-300 hover:text-white hover:bg-slate-800 px-4 py-2 rounded-lg transition-all font-medium">
+                <Link to="/dashboard" className="text-gray-200 hover:text-white hover:bg-gradient-to-r from-cyan-500/20 to-blue-500/20 px-5 py-3 rounded-2xl transition-all font-bold text-lg border-2 border-transparent hover:border-cyan-500/50 hover:scale-110 duration-300">
                   📊 Dashboard
                 </Link>
               )}
@@ -44,25 +44,25 @@ const Navbar: React.FC = () => {
           <div className="flex items-center space-x-4">
             {user ? (
               <>
-                <div className="hidden sm:flex items-center bg-slate-800 px-4 py-2 rounded-lg border border-slate-700">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mr-2">
-                    <span className="text-white font-bold text-sm">{user.username.charAt(0).toUpperCase()}</span>
+                <div className="hidden sm:flex items-center glass-strong px-5 py-3 rounded-2xl border-2 border-cyan-500/30 shadow-lg">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 via-pink-500 to-cyan-500 rounded-full flex items-center justify-center mr-3 animate-pulse-glow">
+                    <span className="text-white font-black text-lg">{user.username.charAt(0).toUpperCase()}</span>
                   </div>
-                  <span className="text-gray-200 font-medium">Hi, {user.username}</span>
+                  <span className="text-white font-bold text-base">Yo, {user.username}! 👋</span>
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-lg transition-all font-semibold shadow-lg hover:shadow-red-500/50 transform hover:scale-105"
+                  className="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white px-6 py-3 rounded-2xl transition-all font-black text-base shadow-2xl shadow-red-500/50 hover:shadow-pink-500/70 transform hover:scale-110 uppercase tracking-wide"
                 >
-                  Logout
+                  Peace Out ✌️
                 </button>
               </>
             ) : (
               <Link
                 to="/login"
-                className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-6 py-2.5 rounded-lg transition-all font-semibold shadow-lg hover:shadow-blue-500/50 transform hover:scale-105"
+                className="bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 hover:from-purple-500 hover:via-pink-500 hover:to-cyan-500 text-white px-8 py-3 rounded-2xl transition-all font-black text-base shadow-2xl shadow-purple-500/50 hover:shadow-pink-500/70 transform hover:scale-110 uppercase tracking-wide animate-pulse-glow"
               >
-                Login
+                Let's Go! 🚀
               </Link>
             )}
           </div>
