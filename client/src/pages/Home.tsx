@@ -71,39 +71,38 @@ const Home: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         {/* Hero Section - GEN Z */}
         <div className="mb-16 text-center animate-bounce-in">
-          <h1 className="text-6xl md:text-7xl font-black text-white mb-6 leading-tight text-glow">
-            <span className="gradient-text">Level Up</span> Your Skills 💪
+          <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-tight">
+            Explore <span className="gradient-text">Coding</span> Problems
           </h1>
           <p className="text-2xl text-gray-200 mb-10 max-w-3xl mx-auto font-medium">
-            Pick a challenge and show 'em what you got! Or create your own and flex! 
-            <span className="inline-block ml-2">🔥🚀</span>
+            Choose a problem to solve, or create your own with AI assistance
           </p>
           <Link 
             to="/create-problem" 
-            className="inline-flex items-center bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 hover:from-purple-500 hover:via-pink-500 hover:to-cyan-500 text-white font-black text-xl px-10 py-5 rounded-2xl shadow-2xl shadow-purple-500/50 hover:shadow-pink-500/70 transform hover:scale-110 transition-all duration-300 animate-pulse-glow uppercase tracking-wide"
+            className="inline-flex items-center bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-600 hover:from-purple-500 hover:via-pink-500 hover:to-cyan-500 text-white font-bold text-xl px-10 py-5 rounded-2xl shadow-xl shadow-purple-500/30 hover:shadow-pink-500/40 transform hover:scale-110 transition-all duration-300"
           >
             <svg className="w-7 h-7 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
             </svg>
-            Create New Problem ⚡
+            Create New Problem
           </Link>
         </div>
 
         {loading ? (
           <div className="text-center py-24 animate-fade-in">
             <div className="inline-block spinner h-20 w-20 border-4"></div>
-            <p className="text-white mt-8 text-2xl font-bold animate-pulse">Fetching epic challenges... 🎯</p>
+            <p className="text-white mt-8 text-2xl font-bold animate-pulse">Loading problems...</p>
           </div>
         ) : problems.length === 0 ? (
           <div className="glass-strong rounded-3xl p-20 text-center border-2 neon-border shadow-2xl animate-scale-in">
             <div className="text-8xl mb-8 animate-bounce-in">🚀</div>
-            <h3 className="text-3xl font-black text-white mb-4 gradient-text">No Problems Yet!</h3>
-            <p className="text-gray-200 text-xl mb-10 font-medium">Be the legend who creates the first one! 💪✨</p>
-            <Link to="/create-problem" className="inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-black text-lg px-10 py-5 rounded-2xl shadow-2xl shadow-purple-500/50 transition-all duration-300 hover:scale-110 uppercase">
+            <h3 className="text-3xl font-bold text-white mb-4 gradient-text">No Problems Yet</h3>
+            <p className="text-gray-200 text-xl mb-10 font-medium">Be the first to create a problem!</p>
+            <Link to="/create-problem" className="inline-flex items-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white font-bold text-lg px-10 py-5 rounded-2xl shadow-xl shadow-purple-500/30 transition-all duration-300 hover:scale-110">
               <svg className="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
               </svg>
-              Create First Problem 🎨
+              Create First Problem
             </Link>
           </div>
         ) : (
@@ -112,13 +111,13 @@ const Home: React.FC = () => {
               <Link
                 key={problem._id}
                 to={`/problem/${problem._id}`}
-                className="group glass-strong hover:glass border-2 border-purple-500/30 hover:border-pink-500/60 rounded-3xl p-8 transition-all duration-300 relative shadow-2xl card-3d hover-glow animate-slide-up"
+                className="group glass-strong hover:glass border-2 border-purple-500/30 hover:border-pink-500/60 rounded-3xl p-8 transition-all duration-300 relative shadow-xl card-3d hover-glow animate-slide-up"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <div className="flex items-center mb-4">
-                      <h3 className="text-3xl font-black text-white group-hover:gradient-text transition-all duration-300 text-glow">
+                      <h3 className="text-3xl font-bold text-white group-hover:gradient-text transition-all duration-300">
                         {problem.title}
                       </h3>
                       <span className={`ml-5 px-5 py-2 rounded-full text-base font-black uppercase tracking-wide ${getDifficultyColor(problem.difficulty)} shadow-lg`}>
@@ -142,7 +141,7 @@ const Home: React.FC = () => {
                     {user && problem.createdBy?._id === user.id && (
                       <button
                         onClick={(e) => handleDeleteClick(problem._id, problem.title, e)}
-                        className="opacity-0 group-hover:opacity-100 transition-all bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white p-4 rounded-2xl shadow-2xl shadow-red-500/50 transform hover:scale-125 hover:rotate-12 duration-300"
+                        className="opacity-0 group-hover:opacity-100 transition-all bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white p-4 rounded-2xl shadow-xl shadow-red-500/30 transform hover:scale-125 hover:rotate-12 duration-300"
                         title="Delete problem"
                       >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -165,41 +164,41 @@ const Home: React.FC = () => {
         {/* Delete Confirmation Modal - DRAMATIC */}
         {deleteModal.show && (
           <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 animate-fade-in">
-            <div className="glass-strong rounded-3xl p-10 max-w-md w-full mx-4 border-2 neon-border shadow-2xl animate-bounce-in">
+            <div className="glass-strong rounded-3xl p-10 max-w-md w-full mx-4 border-2 neon-border shadow-xl animate-bounce-in">
               <div className="flex items-center mb-8">
-                <div className="bg-gradient-to-br from-red-500/30 to-pink-500/30 p-4 rounded-2xl mr-5 animate-pulse-glow">
+                <div className="bg-gradient-to-br from-red-500/30 to-pink-500/30 p-4 rounded-2xl mr-5">
                   <svg className="w-10 h-10 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
                 </div>
-                <h3 className="text-3xl font-black text-white gradient-text-pink">Delete Problem? 🗑️</h3>
+                <h3 className="text-3xl font-bold text-white gradient-text-pink">Delete Problem?</h3>
               </div>
               <p className="text-gray-200 mb-3 text-lg font-medium">
-                You're about to delete:
+                Are you sure you want to delete:
               </p>
               <p className="font-black text-white text-xl mb-8 p-4 bg-red-500/10 rounded-xl border-2 border-red-500/30">
                 "{deleteModal.problemTitle}"
               </p>
-              <div className="bg-gradient-to-r from-red-500/20 to-pink-500/20 border-2 border-red-500/40 rounded-2xl p-5 mb-8 animate-pulse">
+              <div className="bg-gradient-to-r from-red-500/20 to-pink-500/20 border-2 border-red-500/40 rounded-2xl p-5 mb-8">
                 <p className="text-red-300 text-base flex items-center font-bold">
                   <svg className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
-                  No going back! This is permanent! ⚠️
+                  This action cannot be undone
                 </p>
               </div>
               <div className="flex space-x-4">
                 <button
                   onClick={handleDeleteCancel}
-                  className="flex-1 bg-gradient-to-r from-slate-700 to-slate-600 hover:from-slate-600 hover:to-slate-500 text-white font-black text-lg px-6 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105 uppercase"
+                  className="flex-1 bg-gradient-to-r from-slate-700 to-slate-600 hover:from-slate-600 hover:to-slate-500 text-white font-bold text-lg px-6 py-4 rounded-2xl transition-all duration-300 transform hover:scale-105"
                 >
-                  Nah, Keep It ✋
+                  Cancel
                 </button>
                 <button
                   onClick={handleDeleteConfirm}
-                  className="flex-1 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white font-black text-lg px-6 py-4 rounded-2xl transition-all duration-300 shadow-2xl shadow-red-500/50 hover:shadow-pink-500/70 transform hover:scale-105 uppercase"
+                  className="flex-1 bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-500 hover:to-pink-500 text-white font-bold text-lg px-6 py-4 rounded-2xl transition-all duration-300 shadow-xl shadow-red-500/30 hover:shadow-pink-500/40 transform hover:scale-105"
                 >
-                  Yes, Delete 💥
+                  Delete
                 </button>
               </div>
             </div>
